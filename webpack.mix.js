@@ -1,4 +1,8 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
+const postCssImport = require("postcss-import");
+const tailwindCss = require("tailwindcss");
+const autoprefixer = require("autoprefixer");
+// require("laravel-mix-svelte");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,15 +15,18 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .react()
-    .postCss('resources/css/app.css', 'public/css', [
-        require('postcss-import'),
-        require('tailwindcss'),
-        require('autoprefixer'),
-    ])
-    .webpackConfig(require('./webpack.config'));
+mix.postCss("resources/css/app.css", "public/css", [
+  postCssImport,
+  tailwindCss,
+  autoprefixer,
+]);
+
+mix.js("resources/js/react/app.jsx", "public/js/react").react();
+
+// mix.js("resources/js/svelte/app.js", "public/js/svelte").svelte();
+
+mix.js("resources/js/vue/app.js", "public/js/vue").vue();
 
 if (mix.inProduction()) {
-    mix.version();
+  mix.version();
 }

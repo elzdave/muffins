@@ -8,11 +8,22 @@ use Inertia\Middleware;
 class HandleInertiaRequests extends Middleware
 {
     /**
-     * The root template that is loaded on the first page visit.
+     * Sets the root template that's loaded on the first page visit.
      *
-     * @var string
+     * @see https://inertiajs.com/server-side-setup#root-template
+     * @param Request $request
+     * @return string
      */
-    protected $rootView = 'app';
+    public function rootView(Request $request)
+    {
+        if ($request->route()->getPrefix() === 'react') {
+            $this->rootView = 'react.app';
+        } else if ($request->route()->getPrefix() === 'vue') {
+            $this->rootView = 'vue.app';
+        }
+
+        return $this->rootView;
+    }
 
     /**
      * Determine the current asset version.

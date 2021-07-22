@@ -37,7 +37,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $routePrefix = trim($request->route()->getPrefix(), '/');
+
+        return redirect()->intended(route($routePrefix . '.dashboard'));
     }
 
     /**

@@ -16,8 +16,10 @@ class EmailVerificationNotificationController extends Controller
      */
     public function store(Request $request)
     {
+        $routePrefix = trim($request->route()->getPrefix(), '/');
+
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->intended(route($routePrefix . '.dashboard'));
         }
 
         $request->user()->sendEmailVerificationNotification();

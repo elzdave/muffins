@@ -50,6 +50,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        $routePrefix = trim($request->route()->getPrefix(), '/');
+
+        return redirect(route($routePrefix . '.dashboard'));
     }
 }

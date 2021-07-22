@@ -15,17 +15,59 @@ use Inertia\Inertia;
 |
 */
 
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return redirect(route('react.welcome'));
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('react')->name('react.')->group(function () {
+    require __DIR__ . '/auth.php';
 
-require __DIR__.'/auth.php';
+    Route::get('/', function () {
+        return Inertia::render('Welcome', [
+            'canLogin' => Route::has('react.login'),
+            'canRegister' => Route::has('react.register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+        ]);
+    })->name('welcome');
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('dashboard', function () {
+            return Inertia::render('Dashboard');
+        })->name('dashboard');
+    });
+});
+
+Route::prefix('vue')->name('vue.')->group(function () {
+    // authentication using Vue components
+    require __DIR__ . '/auth.php';
+
+    Route::get('/', function () {
+        return Inertia::render('Welcome', [
+            'canLogin' => Route::has('vue.login'),
+            'canRegister' => Route::has('vue.register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+        ]);
+    })->name('welcome');
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('dashboard', function () {
+            return Inertia::render('Dashboard');
+        })->name('dashboard');
+    });
+});

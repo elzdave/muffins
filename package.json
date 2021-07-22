@@ -13,6 +13,7 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.13.13",
+        "@vue/compiler-sfc": "^3.1.5",
         "eslint": "^7.30.0",
         "eslint-config-airbnb": "^18.2.1",
         "eslint-config-prettier": "^8.3.0",
@@ -21,22 +22,28 @@
         "eslint-plugin-prettier": "^3.4.0",
         "eslint-plugin-react": "^7.24.0",
         "eslint-plugin-react-hooks": "^4.2.0",
-        "prettier": "^2.3.2"
+        "prettier": "^2.3.2",
+        "svelte-loader": "^3.1.2",
+        "vue-loader": "^16.2.0"
     },
     "dependencies": {
         "@headlessui/react": "^1.2.0",
-        "@inertiajs/inertia": "^0.9.0",
+        "@inertiajs/inertia": "^0.10.0",
         "@inertiajs/inertia-react": "^0.6.0",
+        "@inertiajs/inertia-svelte": "^0.7.3",
+        "@inertiajs/inertia-vue3": "^0.5.1",
         "@inertiajs/progress": "^0.2.4",
         "@tailwindcss/forms": "^0.3.2",
         "autoprefixer": "^10.2.4",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
+        "laravel-mix-svelte": "^0.4.0",
         "postcss": "^8.2.13",
         "postcss-import": "^14.0.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
-        "tailwindcss": "^2.2.6"
+        "svelte": "^3.40.0",
+        "tailwindcss": "^2.2.6",
+        "vue": "^3.1.5"
     }
 }
