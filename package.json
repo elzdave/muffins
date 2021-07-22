@@ -7,12 +7,36 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "clean:install": "rm -rf vendor node_modules yarn.lock package-lock.json composer.lock && composer install && yarn",
+        "clear:compiled": "rm -rf public/js public/css"
     },
     "devDependencies": {
+        "@babel/preset-react": "^7.13.13",
+        "eslint": "^7.30.0",
+        "eslint-config-airbnb": "^18.2.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.23.4",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^3.4.0",
+        "eslint-plugin-react": "^7.24.0",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "prettier": "^2.3.2"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.2.0",
+        "@inertiajs/inertia": "^0.9.0",
+        "@inertiajs/inertia-react": "^0.6.0",
+        "@inertiajs/progress": "^0.2.4",
+        "@tailwindcss/forms": "^0.3.2",
+        "autoprefixer": "^10.2.4",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.2.13",
+        "postcss-import": "^14.0.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "tailwindcss": "^2.2.6"
     }
 }

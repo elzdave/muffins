@@ -1,0 +1,23 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": ["react", "prettier"],
+    "rules": {
+        "jsx-a11y/label-has-associated-control": [ 2, {
+            "assert": "both",
+            "depth": 3
+        }],
+        "import/no-dynamic-require": 0,
+        "react/forbid-prop-types": 0
+    }
+}
